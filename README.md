@@ -6,9 +6,17 @@ AI displacement risk focuses on *which* jobs get automated. The harder question 
 
 ## The Original Index
 
-Anthropic's "Labor market impacts of AI" (Massenkoff & McCrory, 2026) and Eloundou et al.'s GPTs-are-GPTs (2023) measure *observed exposure*—which occupations face AI displacement risk based on task-level LLM capability and real-world Claude usage. The bottom 30% of workers by their measure have zero observed coverage: cooks, lifeguards, bartenders, dishwashers, dressing room attendants.
+Anthropic's "Labor market impacts of AI" (Massenkoff & McCrory, 2026) and Eloundou et al.'s GPTs-are-GPTs (2023) measure *observed exposure*—which occupations face AI displacement risk based on task-level LLM capability (Eloundou β) and real-world Claude usage. Their key finding: no systematic increase in unemployment for highly exposed workers, though hiring of young workers (22–25) into exposed occupations may be slowing.
 
-The implicit assumption: low exposure means "safe." But the most AI-exposed workers are older, more educated, and earn 47% more than the least exposed. AI displacement risk is inversely correlated with job quality. The "safe" jobs are, in many cases, the worst jobs.
+The bottom 30% of workers by their measure have zero observed coverage: cooks, motorcycle mechanics, lifeguards, bartenders, dishwashers, dressing room attendants. The implicit assumption: low exposure means "safe." But these jobs are safe from AI only in the narrow sense that an LLM cannot currently perform their tasks. They are decidedly not safe in almost every other dimension that matters to human welfare:
+
+- **Low pay**: Median wages for many fall below the national median.
+- **Physical toll**: High rates of injury, repetitive strain, standing/lifting demands, and environmental hazards.
+- **Short occupational lifespans**: You don't see 60-year-old roofers, movers, or construction laborers—the body gives out long before retirement age.
+- **Low satisfaction and high burnout**: Healthcare support workers, food service, and cleaning occupations consistently report among the lowest job satisfaction and highest stress.
+- **Precarity**: High turnover, low unionization, minimal benefits, schedule unpredictability.
+
+The most AI-exposed workers are older, more educated, and earn 47% more than the least exposed. AI displacement risk is inversely correlated with job quality. The "safe" jobs are, in many cases, the worst jobs.
 
 ---
 

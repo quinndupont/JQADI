@@ -153,11 +153,11 @@ def load_onet_work_activities() -> pd.DataFrame:
 
     out = pd.DataFrame(index=piv.index).reset_index()
     if cognitive_ids:
-        out["cognitive_share"] = piv[cognitive_ids].mean(axis=1)
+        out["cognitive_share"] = piv[cognitive_ids].mean(axis=1).values
     else:
         out["cognitive_share"] = 0.5
     if physical_ids:
-        out["physical_share"] = piv[physical_ids].mean(axis=1)
+        out["physical_share"] = piv[physical_ids].mean(axis=1).values
     else:
         out["physical_share"] = 0.5
     total = out["cognitive_share"] + out["physical_share"]
