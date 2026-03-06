@@ -60,14 +60,84 @@ Weights elevate low-quality jobs so trapped workers rank higher. **Trapped index
 
 ## Key Outputs
 
-| File | Description |
-|------|--------------|
-| `good_safe_jobs.csv` | Low AI exposure + high JQI—Podiatrists, Nurse Anesthetists, Dentists, Physical Therapists, etc. |
-| `trapped_workers.csv` | Low AI, low quality—landscapers, construction laborers, meat cutters, dishwashers |
-| `task_residual_risk.csv` | Jobs where AI automates cognitive work, leaving physical drudgery |
-| `career_viable_safe.csv` | Good safe jobs with wage above median and sustainable age profile |
+### Quadrant Summary
 
-See [output/](output/) for visualizations and full results.
+| Quadrant | Occupations | Employment |
+|----------|-------------|------------|
+| Low AI, Low Quality (trapped) | 476 | 83.5M |
+| Low AI, High Quality (good safe) | 269 | 39.0M |
+| High AI, Low Quality | 5 | 3.5M |
+| High AI, High Quality | 6 | 2.4M |
+
+### Top Good Safe Jobs (low AI, high quality)
+
+| Occupation | JQI | AI exposure | Wage/hr | Age ratio | Employment |
+|------------|-----|-------------|---------|-----------|------------|
+| Chief Executives | 0.81 | 0.03 | $86 | 4.77 | 200K |
+| Lawyers | 0.77 | 0.17 | $62 | 1.45 | 681K |
+| Pediatricians | 0.75 | 0.00 | $82 | — | 34K |
+| Architectural/Engineering Managers | 0.74 | 0.03 | $73 | 2.03 | 187K |
+| Clinical/Counseling Psychologists | 0.73 | 0.06 | $40 | 2.67 | 58K |
+| Podiatrists | 0.73 | 0.00 | $70 | 1.00 | 9K |
+| Optometrists | 0.71 | 0.00 | $60 | 1.89 | 39K |
+| Nurse Anesthetists | 0.70 | 0.00 | $94 | 1.33 | 44K |
+
+### Top Trapped Workers (low AI, low quality)
+
+| Occupation | JQI | AI exposure | Employment |
+|-------------|-----|-------------|------------|
+| Landscaping and Groundskeeping Workers | 0.19 | 0.00 | 892K |
+| Cutting, Punching, Press Machine Setters (Metal/Plastic) | 0.18 | 0.00 | 180K |
+| Meat, Poultry, Fish Cutters and Trimmers | 0.19 | 0.00 | 132K |
+| Farmworkers and Laborers (Crop, Nursery, Greenhouse) | 0.20 | 0.02 | 277K |
+| Cement Masons and Concrete Finishers | 0.18 | 0.00 | 187K |
+| Slaughterers and Meat Packers | 0.19 | 0.00 | 86K |
+| Molding, Coremaking, Casting Machine Setters | 0.21 | 0.00 | 163K |
+| Textile Winding/Twisting Machine Setters | 0.17 | 0.00 | 22K |
+
+### Top JQADI Risk (combined displacement + low quality)
+
+| Occupation | JQADI | AI exposure | JQI | Employment |
+|------------|-------|-------------|-----|------------|
+| Customer Service Representatives | 0.64 | 0.70 | 0.34 | 2.8M |
+| Data Entry Keyers | 0.62 | 0.67 | 0.36 | 147K |
+| Medical Records Specialists | 0.60 | 0.67 | 0.38 | 181K |
+| Medical Transcriptionists | 0.57 | 0.64 | 0.41 | 56K |
+| Office Clerks, General | 0.55 | 0.45 | 0.35 | 2.6M |
+| Secretaries and Administrative Assistants | 0.52 | 0.45 | 0.39 | 1.8M |
+| Receptionists and Information Clerks | 0.52 | 0.43 | 0.39 | 983K |
+| Retail Salespersons | 0.51 | 0.32 | 0.33 | 3.7M |
+
+### Visualizations
+
+**AI Exposure × Job Quality (quadrant map)**
+
+![JQADI scatter](output/jqadi_scatter.png)
+
+**Good safe vs. trapped (low-AI jobs by employment)**
+
+![Good safe vs trapped](output/good_safe_vs_trapped.png)
+
+**Task residual risk** (cognitive share vs. AI exposure; color = physical share remaining)
+
+![Task residual scatter](output/task_residual_scatter.png)
+
+**Employment-weighted cumulative risk**
+
+![JQADI cumulative](output/jqadi_cumulative.png)
+
+### Output Files
+
+| File | Description |
+|------|-------------|
+| `good_safe_jobs.csv` | 322 occupations: low AI + high JQI |
+| `trapped_workers.csv` | 31 occupations: low AI, low quality |
+| `task_residual_risk.csv` | Jobs where AI strips cognitive work, leaves physical drudgery |
+| `career_viable_safe.csv` | 68 occupations: good safe + wage above median + sustainable age ratio |
+| `top_jqadi_occupations.csv` | Top 15 by combined JQADI risk |
+| `quadrant_analysis.csv` | Counts and employment by quadrant |
+
+See [output/](output/) for full CSVs.
 
 ---
 
