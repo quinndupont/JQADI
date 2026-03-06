@@ -366,9 +366,19 @@ def build_jqadi(jqi: pd.DataFrame, ai_exposure: pd.DataFrame) -> pd.DataFrame:
     w1, w2, w3 = 0.25, 0.6, 0.15
     df["JQADI"] = w1 * df["ai_exposure"] + w2 * df["low_quality"] + w3 * df["ai_exposure"] * df["low_quality"]
     df["trapped_index"] = np.where(df["ai_exposure"] < 0.3, df["low_quality"], np.nan)
+
+    # Normalize cognitive/physical shares to [0,1] for meaningful task_residual_risk
+    for col in ["cognitive_share", "physical_share"]:
+        if col in df.columns:
+            mn, mx = df[col].min(), df[col].max()
+            if mx > mn:
+                df[col] = (df[col] - mn) / (mx - mn)
+            else:
+                df[col] = 0.5
+
     df["task_residual_risk"] = np.where(
         (df["ai_exposure"] > 0.2) & (df["ai_exposure"] < 0.7),
-        df["ai_exposure"] * df.get("cognitive_share", 0.5) * df.get("physical_share", 0.5),
+        df["ai_exposure"] * df["cognitive_share"].fillna(0.5) * df["physical_share"].fillna(0.5),
         np.nan,
     )
     return df

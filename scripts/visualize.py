@@ -109,9 +109,9 @@ def main():
     plt.close()
     print(f"  Saved {FIGS / 'good_safe_vs_trapped.png'}")
 
-    # 5. Task-residual scatter: cognitive_share vs ai_exposure, colored by physical_share
+    # 5. Task-residual scatter: cognitive_share vs ai_exposure, colored by physical_share (all 0-1 normalized)
     if "cognitive_share" in df.columns and "physical_share" in df.columns:
-        tr_df = df[(df["ai_exposure"] > 0.2) & (df["ai_exposure"] < 0.7) & (df["employment"] > 1000)]
+        tr_df = df[(df["ai_exposure"] > 0.2) & (df["ai_exposure"] < 0.7) & (df["employment"] > 1000)].copy()
         if not tr_df.empty:
             fig, ax = plt.subplots(figsize=(10, 7))
             size = (tr_df["employment"] / 1000).clip(upper=300)
@@ -124,9 +124,21 @@ def main():
                 cmap="viridis",
             )
             ax.set_xlabel("AI Exposure")
-            ax.set_ylabel("Cognitive task share")
+            ax.set_ylabel("Cognitive task share (0–1)")
             ax.set_title("Task residual risk: AI automates cognitive work (color = physical share remaining)")
-            plt.colorbar(scatter, ax=ax, label="Physical share")
+            plt.colorbar(scatter, ax=ax, label="Physical share (0–1)")
+            # Annotate top occupations by task_residual_risk
+            top_tr = tr_df[tr_df["task_residual_risk"].notna()].nlargest(5, "task_residual_risk")
+            for i, (_, row) in enumerate(top_tr.iterrows()):
+                offset = (10, 10) if i % 2 == 0 else (-10, -10)
+                ax.annotate(
+                    row["Title"][:22] + (".." if len(str(row["Title"])) > 22 else ""),
+                    (row["ai_exposure"], row["cognitive_share"]),
+                    fontsize=7,
+                    alpha=0.85,
+                    xytext=offset,
+                    textcoords="offset points",
+                )
             plt.tight_layout()
             plt.savefig(FIGS / "task_residual_scatter.png", bbox_inches="tight")
             plt.close()
